@@ -1,10 +1,14 @@
-# R_workshop_GU_Summer2020
+# R_workshop_APA_2022
 
-Summer 2020
-Instructor: Joscelin Rocha-Hidalgo.    
-Length of workshop: Two 4-hr sessions
+Summer 2022
+Instructors: 
+Joscelin Rocha-Hidalgo
+Yolanda Yang
+Grace Goodwin
+Length of workshop: Two 1-hr 50min session
 
-Email: jr1679@georgetown.edu
+Email: 
+jr1679@georgetown.edu
 
 This repo:
 
