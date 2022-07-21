@@ -5,6 +5,8 @@ Instructors:
 - Joscelin Rocha-Hidalgo   
 - Yolanda Yang
 - Grace Goodwin
+
+
 Length of workshop: Two 1-hr 50min session
 
 Email: 
