@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R Workshop"
-author: "Joscelin Rocha Hidalgo <br /> (she,her,hers) <br /> @JoscelinRocha"
+author: "Joscelin Rocha Hidalgo - she/her - (@JoscelinRocha) <br /> Grace Goodwin <br /> (pronouns) <br /> (Twitter handle) <br />"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
@@ -38,11 +38,11 @@ Logistics
 
 --
 
-Intro to R and Importing Datasets
+Intro to R and Importing Datasets (Yolanda)
 
 --
 
- RMarkdown
+ RMarkdown (Grace)
 
 --
 
@@ -50,11 +50,11 @@ _**Break**_
 
 --
 
-Data Manipulation
+Data Manipulation (Joscelin)
 
 --
 
-Data Visualization
+Data Visualization + Markdown (Grace)
 
 ---
 
