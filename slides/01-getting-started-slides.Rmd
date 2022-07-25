@@ -1,6 +1,6 @@
 ---
 title: "Introduction to R Workshop"
-author: "Joscelin Rocha Hidalgo - she/her - (@JoscelinRocha) <br /> Grace Goodwin <br /> (pronouns) <br /> (Twitter handle) <br />"
+author: "Joscelin Rocha Hidalgo - she/her - (@JoscelinRocha) <br /> Grace Goodwin - (she/her) - (@gracejgoodwin) <br />"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
