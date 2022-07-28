@@ -39,6 +39,10 @@ You can:
 2. Generate high-quality reports that can be shared with an audience
 
 ---
+RMarkdown Interface
+![](images/interface.png)
+
+---
 # What can I use RMarkdown for?
 
 --
@@ -55,7 +59,7 @@ You can:
 # Why use RMarkdown?
 
 --
-RMarkdown was designed for easier reproducibility. 
+RMarkdown was designed for easier **reproducibility**. 
 
 --
 
@@ -79,9 +83,7 @@ You can alternate between text and code within the same document
 
 ![](images/viewer_markdown.png)
 
----
-RMarkdown Interface
-![](images/interface.png)
+
 
 ---
 # RMarkdown Overview
@@ -92,26 +94,27 @@ Every RMarkdown document has the following:
 
 ![](images/rmarkdown-overview.png)
 
----
-## Knitting (aka Export)
 
-
-![](images/rmarkdown_knitting.gif)
 
 ---
 
 # YAML
 
 ![](images/yaml.png)
-
 --
 Stands for "YAML Ain't Markup Language"
+
+--
+
+The very top of your RMarkdown
 
 --
 
 Where you add title, author, date, output options, etc. 
 
 --
+
+Can specify how you want your knitted file to look (e.g., do you want a table of contents? do you want your code to be visible? etc.)
 
 ---
 
@@ -221,42 +224,30 @@ Text with **some words in bold** and *some words in italics*
 ]
 
 
----
-
-class: inverse
-
-## Your Turn
-
-
-1. Create a new RMarkdown file, setting the default output format as Word.
-
-1. Save your RMarkdown file as report.Rmd.
-
-1. Go into the YAML and change the title to “My 2022 Report.”
-
-1. Change the output format to HTML by changing `output: word_document` to `output: html_document`.
-
-1. Add the following first-level header: "Introduction"
 
 ---
-class: inverse
 
-## Your Turn
+## Inline Code
+Surround code with back ticks and r. R replaces inline code with its results.
 
-<ol start=6>
-<li> Add this text (note the bold and italics) below the introduction header: "My name is (write your name here). I am the most **amazing** human being. You've *never* met someone like me. Please hire me!"    
+--
+```{r}
+# Two plus two equals `r 2 + 2`.
+```
 
-<li> Add the following second-level header: "Reasons Why I am the Best"
+--
+*becomes*
 
-<li> Add the following list of reasons:
+--
 
-    - Because I say so
-    - Because it is true
-    - Why would I lie?
+Two plus two equals `r 2 + 2`.
 
-<li> Knit and reopen the report.html file to make sure your changes show up.
+--
+
+This is great for writing papers!
 
 ---
+
 
 # Code Chunk
 
@@ -275,6 +266,7 @@ They start with three backticks and {r} and end with three backticks.
 
 ![](images/my-chunk-plot.png)
 ]
+
 
 
 
@@ -340,3 +332,66 @@ All chunk options can be set at the **global level** (in the setup code chunk) o
 --
 
 Options at the individual chunk level **override** global chunk options.
+
+
+---
+## Knitting (aka Export)
+
+
+![](images/rmarkdown_knitting.gif)
+
+
+
+---
+class: inverse
+
+## Your Turn
+
+
+1. Create a new RMarkdown file, setting the default output format as Word.
+
+    - File > New File > R Markdown...
+
+1. Save your RMarkdown file as report.Rmd.
+
+1. Go into the YAML and change the title to “My 2022 Report.”
+
+1. Change the output format to HTML by changing `output: word_document` to `output: html_document`.
+
+1. Add the following first-level header: "Introduction"
+
+---
+class: inverse
+
+## Your Turn
+
+<ol start=6>
+<li> Add this text (note the bold and italics) below the introduction header: "My name is (write your name here). I am the most **amazing** human being. You've *never* met someone like me. Please hire me!"    
+
+<li> Add the following second-level header: "Reasons Why I am the Best"
+
+<li> Add the following list of reasons:
+
+    - Because I say so
+    - Because it is true
+    - Why would I lie?
+    
+
+
+---
+class:inverse
+
+## Your Turn
+<ol start=9>
+<li> Create a chunk using a shortcut
+<li> Calculate 2 + 2 and save the result as a variable called "my_var"
+<li> Print "my_var" using print()
+<li> Knit and reopen the report.html file to make sure your changes show up.
+
+---
+More Resources
+
+![](images/rmarkdown_cheatsheet.png)
+---
+More Resources (this just in!!)
+![](images/papaja.png)
