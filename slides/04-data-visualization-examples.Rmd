@@ -1,22 +1,23 @@
 ---
-title: "Data Visualization Examples"
-author: "Joscelin Rocha Hidalgo"
-output: 
-    html_document:
-        css: slides/style.css
-        toc: true
-        toc_depth: 1
-        toc_float: true
-        df_print: paged
+title: "Data Visualization"
+author: "Grace J. Goodwin <br /> (she/her) <br /> @gracejgoodwin"
+output:
+  xaringan::moon_reader:
+    css: ["style.css", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
 ---
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r include = FALSE, warning = FALSE}
+#options(htmltools.dir.version = FALSE)
+#xaringan::inf_mr()
 ```
 
-
-# Load Packages
+---
+## Load Packages
 
 Let's load the `tidyverse` package. 
 
@@ -25,7 +26,7 @@ library(ggplot2)
 library(tidyverse)
 ```
 
-# Import chds6162_data Data
+## Import Data
 
 Let's import our data using `read_csv`. 
 
@@ -33,18 +34,43 @@ Let's import our data using `read_csv`.
 data <- read.csv("data/chds6162_data.csv")
 ```
 
+---
+## ggplot structure
+ggplots are built from:
+
++ a **data set**
++ a **coordinate system**
++ **aes** positions/maps the variables on the plot
++ a **geom** draws the graph (e.g, scatterplot, histogram, etc.)
+
+---
 # ggplot template
+Think of your ggplot like a cake with layers
 
-```{r eval = FALSE}
-ggplot(data = data_frame,
-       mapping = aes(x = x_variable,
-                     y = y_variable)) +
-  geom_something()
-```
+--
+
+Each layer adds something to the graph
+
+--
+
+Layers:
+
+--
+
+ `+ ggtitle` (adds a title)
+ 
+--
+
+ `+ theme` (adds a theme)
+ 
+--
+
+ `+ facet_wrap(~var)` (split plots by specific variable)
 
 
+---
 
-# Scatterplot
+## Scatterplot
 
 We use `geom_point` to make a scatterplot. Let's make a scatterplot that shows age on the x axis and height on the y axis.
 
@@ -59,10 +85,11 @@ ggplot(data = data,
 ggplot(data,aes(age,ht)) + geom_point()
 ```
 
+---
 ![](slides/images/ggplot-scatterplot-example.png)
+---
 
-
-# Histogram 
+## Histogram 
 
 We use `geom_histogram` to make a histogram. Let's make a histogram of age.
 
@@ -72,12 +99,12 @@ ggplot(data = data,
   geom_histogram()
 ```
 
-
+---
 How does ggplot know what to plot on the y axis? It's using the default statistical transformation for `geom_histogram`, which is `stat = "bin"`.
 
-
+---
 ![](slides/images/ggplot-histogram-example.png)
-
+---
 If we add `stat = "bin"` we get the same thing. Each geom has a default stat.
 
 ```{r}
@@ -98,7 +125,7 @@ ggplot(data = data,
   geom_histogram(bins = 10)
 ```
 
-
+---
 # Bar Chart
 
 There are two basic approaches to making bar charts, both of which use `geom_bar`.
@@ -119,7 +146,7 @@ Assign variables to the x and y axes
 
 Use `stat = "identity"` to tell ggplot to use the data exactly as it is
 
-
+---
 ## Bar Chart v1
 
 Let's make a bar chart that shows height.
@@ -147,7 +174,7 @@ ggplot(data, aes(age)) + geom_bar()
 Here's what's going on.
 
 ![](slides/images/ggplot-bar-graph-example.png)
-
+---
 
 ## Bar Chart v2
 
@@ -177,6 +204,7 @@ ggplot(data = gestation_by_smoke,
   geom_bar(stat = "identity") 
 ```
 
+---
 
 # `color` and `fill`
 
@@ -206,7 +234,7 @@ ggplot(data = data,
 ggplot(data,aes(age,ht,color = smoke)) + geom_point()
 ```
 
-
+---
 Let's try the same thing with our last bar chart (gestation_by_smoke. 
 
 ```{r}
@@ -216,7 +244,7 @@ ggplot(data = gestation_by_smoke,
                      color = smoke)) +
   geom_bar(stat = "identity") 
 ```
-
+---
 That didn't work! Let's try `fill` instead.
 
 ```{r}
@@ -227,7 +255,7 @@ ggplot(data = gestation_by_smoke,
   geom_bar(stat = "identity")
 ```
 
-
+---
 # Scales
 
 ## color
@@ -250,7 +278,7 @@ ggplot(data = data,
 ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) + geom_point() + scale_color_viridis_d(option = "plasma")
 ```
 
-
+---
 # Plot Labels
 
 To add labels to our plot, we use `labs`. let's add a `title` argument to the last scatterplot.
@@ -261,7 +289,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
   scale_color_viridis_d(option = "plasma") + 
   labs(title = "Mother's age and height by smoking habits")
 ```
-
+---
 We can add a `subtitle` as well.
 
 ```{r}
@@ -271,7 +299,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
        subtitle = "Data from the Child Health and Development Studies 1961 and 1962")
 ```
 
-
+---
 We can change the x and y axis labels using the `x` and `y` arguments.
 
 ```{r}
@@ -284,7 +312,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
        color = "Smoking habits")
 ```
 
-
+---
 # Themes
 
 To add a theme to a plot, we use the `theme_` set of functions. There are several built-in themes. For instance, `theme_minimal`.
@@ -299,14 +327,14 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
        y = "Height (inches)", color = "Smoking habits") + 
   theme_minimal()
 ```
-
+---
 There are also packages that give you themes you can apply to your plots. 
 
 `ggthemes` package
 
 ```{r}
 library(ggthemes)
-?ggthemes
+#?ggthemes
 ```
 
 We can then use a theme from this package (`theme_excel_new`) to make our plots look like those in the new version of Excel.
@@ -335,7 +363,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
   theme_apa() 
 ```
 
-
+---
 # Facets (my favorite feature when making graphs)
 
 You can make small multiples by adding just a line of code using the `facet_wrap` function. Let's make separate plot for all the labels in the smoking variable
@@ -353,7 +381,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 
-
+---
 We can do this for any type of figure. let's make multiple histograms for age by smoking habits
 
 
@@ -364,7 +392,7 @@ ggplot(data = data,
    theme_apa() + 
   facet_wrap(~smoke_lbl) 
 ```
-
+---
 Another example:
 
 ```{r}
@@ -382,7 +410,7 @@ ggplot(data = data,
   theme_economist() +
   facet_wrap(~ed)
 ```
-
+---
 # Save Plots
 
 RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
@@ -402,7 +430,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 
 ggsave("plots/plot_example.png")
 ```
-
+---
 ```
 
 We can save our plot to other formats as well. PDF is a great option.
