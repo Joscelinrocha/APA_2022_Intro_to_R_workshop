@@ -1,0 +1,57 @@
+---
+title: "Data Visualization"
+author: "Grace J. Goodwin <br /> (she/her) <br /> @gracejgoodwin"
+output:
+  xaringan::moon_reader:
+    css: ["style.css", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+```{r include = FALSE, warning = FALSE}
+#options(htmltools.dir.version = FALSE)
+#xaringan::inf_mr()
+```
+
+
+
+## ggplot structure
+ggplots are built from:
+
++ a **data set**
++ a **coordinate system**
++ **aes** positions/maps the variables on the plot
++ a **geom** draws the graph (e.g, scatterplot, histogram, etc.)
+
+---
+# ggplot template
+Think of your ggplot like a cake with layers
+
+--
+
+Each layer adds something to the graph
+
+--
+
+Layers:
+
+--
+
+ `+ ggtitle` (adds a title)
+ 
+--
+
+ `+ theme` (adds a theme)
+ 
+--
+
+ `+ facet_wrap(~var)` (split plots by specific variable)
+
+
+---
+
+
+

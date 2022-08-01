@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Data Visualization</title>
+    <title>Data Visualization Examples</title>
     <meta charset="utf-8" />
     <meta name="author" content="Grace J. Goodwin   (she/her)   @gracejgoodwin" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Data Visualization
+# Data Visualization Examples
 ]
 .author[
 ### Grace J. Goodwin <br /> (she/her) <br /> <span class="citation">@gracejgoodwin</span>
@@ -23,27 +23,8 @@ class: center, middle, inverse, title-slide
 
 
 
----
-## Load Packages
-
-Let's load the `tidyverse` package. 
 
 
-```r
-library(ggplot2)
-library(tidyverse)
-```
-
-## Import Data
-
-Let's import our data using `read_csv`. 
-
-
-```r
-data &lt;- read.csv("data/chds6162_data.csv")
-```
-
----
 ## ggplot structure
 ggplots are built from:
 
@@ -79,6 +60,26 @@ Layers:
 
 ---
 
+## Load Packages
+
+Let's load the `tidyverse` package. 
+
+
+```r
+library(ggplot2)
+library(tidyverse)
+```
+
+## Import Data
+
+Let's import our data using `read_csv`. 
+
+
+```r
+data &lt;- read.csv("data/chds6162_data.csv")
+```
+
+
 ## Scatterplot
 
 We use `geom_point` to make a scatterplot. Let's make a scatterplot that shows age on the x axis and height on the y axis.
@@ -92,8 +93,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 23 rows containing missing values
-## (geom_point).
+## Warning: Removed 23 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
@@ -105,8 +105,7 @@ ggplot(data,aes(age,ht)) + geom_point()
 ```
 
 ```
-## Warning: Removed 23 rows containing missing values
-## (geom_point).
+## Warning: Removed 23 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-4-2.png)&lt;!-- --&gt;
@@ -127,13 +126,11 @@ ggplot(data = data,
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
@@ -154,13 +151,11 @@ ggplot(data = data,
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
@@ -172,13 +167,11 @@ ggplot(data,aes(age)) + geom_histogram()
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-6-2.png)&lt;!-- --&gt;
@@ -193,8 +186,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
@@ -234,8 +226,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_count).
+## Warning: Removed 2 rows containing non-finite values (stat_count).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
@@ -251,8 +242,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_count).
+## Warning: Removed 2 rows containing non-finite values (stat_count).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
@@ -263,8 +253,7 @@ ggplot(data, aes(age)) + geom_bar()
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_count).
+## Warning: Removed 2 rows containing non-finite values (stat_count).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-9-2.png)&lt;!-- --&gt;
@@ -333,8 +322,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 23 rows containing missing values
-## (geom_point).
+## Warning: Removed 23 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
@@ -346,8 +334,7 @@ ggplot(data,aes(age,ht,color = smoke)) + geom_point()
 ```
 
 ```
-## Warning: Removed 23 rows containing missing values
-## (geom_point).
+## Warning: Removed 23 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-12-2.png)&lt;!-- --&gt;
@@ -401,8 +388,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
@@ -413,8 +399,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) + geom_point() + scale_colo
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-15-2.png)&lt;!-- --&gt;
@@ -433,8 +418,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
@@ -450,8 +434,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
@@ -471,8 +454,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
@@ -495,8 +477,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
@@ -526,8 +507,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
@@ -547,8 +527,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-21-2.png)&lt;!-- --&gt;
@@ -572,8 +551,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
@@ -593,13 +571,11 @@ ggplot(data = data,
 ```
 
 ```
-## `stat_bin()` using `bins = 30`. Pick better value with
-## `binwidth`.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 ```
-## Warning: Removed 2 rows containing non-finite values
-## (stat_bin).
+## Warning: Removed 2 rows containing non-finite values (stat_bin).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
@@ -624,8 +600,7 @@ ggplot(data = data,
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-24-1.png)&lt;!-- --&gt;
@@ -650,8 +625,7 @@ ggplot(data,mapping = aes(age,ht,color = smoke_lbl)) +
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 ![](04-data-visualization-examples_files/figure-html/unnamed-chunk-25-1.png)&lt;!-- --&gt;
@@ -665,8 +639,7 @@ ggsave("plots/plot_example.png")
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 ---
 ```
@@ -683,8 +656,7 @@ ggsave("plots/example.pdf")
 ```
 
 ```
-## Warning: Removed 568 rows containing missing values
-## (geom_point).
+## Warning: Removed 568 rows containing missing values (geom_point).
 ```
 
 
