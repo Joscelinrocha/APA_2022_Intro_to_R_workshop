@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>RMarkdown</title>
+    <title>Creating Reproducible Analyses: Introduction to RMarkdown</title>
     <meta charset="utf-8" />
     <meta name="author" content="Grace J. Goodwin   (she/her)   @gracejgoodwin" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
@@ -13,7 +13,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# RMarkdown
+# Creating Reproducible Analyses: Introduction to RMarkdown
 ]
 .author[
 ### Grace J. Goodwin <br /> (she/her) <br /> <span class="citation">@gracejgoodwin</span>
@@ -122,7 +122,7 @@ Where you add title, author, date, output options, etc.
 
 --
 
-Can specify how you want your knitted file to look (e.g., do you want a table of contents? do you want your code to be visible? etc.)
+Specify how you want your knitted file to look (e.g., do you want a table of contents? do you want your code to be visible? etc.)
 
 ---
 
@@ -349,6 +349,41 @@ Options at the individual chunk level **override** global chunk options.
 
 ![](images/rmarkdown_knitting.gif)
 
+Your RMarkdown won't knit if you have errors in your code. Knit early and often to identify errors!
+
+---
+## Writing Reproducible Code 
+*(adapted from Harvard WiP Crash Course in R by Kirsten Morehouse)*
+--
+
+### Reproducible = When you send someone your code and data, they can 100% reproduce your results, without getting errors (or divergent results)
+
+---
+
+- Make sure you are using the **most recent version of R** (sometimes packages are or aren't
+compatible with different versions of R)
+
+- Update your packages: `update.packages()`
+
+- Load AND install packages: 
+    - `if (!require("packagename")) {install.packages("packagename"); require("packagename")}` 
+    
+- DON'T include paths when you load data. Your path won't work for other people. Specify working directories instead. 
+
+- Save any models you've run.
+
+- Clear your environment and try running everything again. Bonus if you run your code on a new machine.
+
+---
+## Share your code
+#### Info to include:
+- README file 
+     - What should users expect to see in your repo?
+- Instructions for reproducing your results (make sure to include the R script and data names,
+as well as the order in which the scripts shoudl be run)
+- Data + Codebook 
+- Analysis script (bonus points for data cleaning script, too!)
+- Saved models
 
 
 ---
