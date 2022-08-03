@@ -4,7 +4,7 @@ author: "Grace J. Goodwin <br /> (she/her) <br /> @gracejgoodwin"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
-    lib_dir: libs
+    lib_dir: libss
     nature:
       highlightStyle: github
       highlightLines: true
@@ -17,6 +17,21 @@ output:
 ```
 
 
+# ggplot
+```{r, echo=FALSE, out.width="50%", fig.cap="Art by @alison_horst"}
+knitr::include_graphics("images/horst_ggplot.png")
+```
+
+---
+
+# ggplot
+
++ Open source data visualization package in R
++ Breaks up graphs into semantic components (scales and layers)
++ Creates nice looking, high quality graphs
++ In contrast to base R, ggplot allows user to add/remove/change graph components
+
+---
 
 ## ggplot structure
 ggplots are built from:
@@ -40,18 +55,216 @@ Layers:
 
 --
 
- `+ ggtitle` (adds a title)
+`+ geom_histogram` (specifies that graph should be a histogram, etc.)
+
+--
+
+`+ ggtitle` (adds a title)
  
 --
 
- `+ theme` (adds a theme)
+`+ theme` (adds a theme)
  
 --
 
- `+ facet_wrap(~var)` (split plots by specific variable)
+`+ facet_wrap(~var)` (split plots by specific variable)
+
+---
+## Some examples
+--
+
+### Basic Scatterplot
+
+.pull-left[
+**Markdown**
+
+```
+ggplot(data = data,
+       mapping = aes(x = age,
+                     y = ht)) +
+  geom_point()
+
+
+```
+
+]
+
+--
+
+.pull-right[
+**Output**
+![](images/ex_scatterplot_basic.png)
+
+]
+
+---
+
+### Basic Histogram
+
+.pull-left[
+**Markdown**
+
+```
+ggplot(data = data, 
+       mapping = aes(x = age)) +
+  geom_histogram()
+
+```
+
+]
+
+--
+
+.pull-right[
+**Output**
+![](images/ex_bar_basic.png)
+
+]
+
+---
+
+### Add some color with  `color = `
+
+.pull-left[
+**Markdown**
+
+```
+ggplot(data = data,
+       mapping = aes(x = age,
+                     y = ht,
+                     color = smoke_lbl)) + 
+  geom_point()
+
+```
+
+]
+
+--
+
+.pull-right[
+**Output**
+![](images/ex_scatter_color.png)
+
+]
+
+---
+
+#### We can change which colors the data is mapped to by using a `scale_` function. 
+
+.pull-left[
+**Markdown**
+
+```
+ggplot(data = data,
+       mapping = aes(x = age,
+                     y = ht,
+                     color = smoke_lbl)) + 
+  geom_point() +
+  scale_color_viridis_d(option = "plasma")
+
+```
+
+]
+
+--
+
+.pull-right[
+**Output**
+![](images/ex_scatter_color2.png)
+
+]
+
+---
+### Plot titles and formatting
+.pull-left[
+**Markdown**
+
+```
+ggplot(data,mapping = 
+aes(age,ht,color = smoke_lbl)) + 
+  geom_point() + 
+  scale_color_viridis_d(option = "plasma") + 
+  labs(title = "My Title", 
+       subtitle = "My Subtitle", 
+       x = "Age",
+       y = "Height (inches)", 
+       color = "Smoking habits") + 
+  theme_apa() 
+
+```
+
+]
+
+--
+
+.pull-right[
+**Output**
+![](images/ex_scatter_apa.png)
+
+]
+
 
 
 ---
+#### `facet_wrap` creates separate plot for all of the labels in the "smoking" variable
+
+.pull-left[
+**Markdown**
+
+```
+ggplot(data,mapping = 
+aes(age,ht,color = smoke_lbl)) + 
+  geom_point() + 
+  scale_color_viridis_d(option = "plasma") + 
+  labs(title = "My Title", 
+       subtitle = "My Subtitle", 
+       x = "Age",
+       y = "Height (inches)", 
+       color = "Smoking habits") + 
+  theme_apa() + 
+  facet_wrap(~smoke_lbl) 
+
+```
+
+]
+
+--
+
+.pull-right[
+**Output**
+![](images/ex_scatter_facet.png)
+
+]
+
+---
+### Save your plots
+RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
+
+--
+
+Use the `ggsave` function. 
+
+--
+
+By default, `ggsave` will save the last plot you made. So you can add this line of code beneath each of the graphs you want to save:
+
+--
+
+```
+ggsave("filename/my_plot.png")
+```
+
+---
+More Resources
+![](images/gg_cheat.png)
+
+---
+More Resources
+```{r, echo=FALSE, out.width="70%", fig.cap="Esquisse package"}
+knitr::include_graphics("images/esquisse.gif")
+```
+
+
 
 
 

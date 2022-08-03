@@ -356,21 +356,31 @@ Your RMarkdown won't knit if you have errors in your code. Knit early and often 
 *(adapted from Harvard WiP Crash Course in R by Kirsten Morehouse)*
 --
 
-### Reproducible = When you send someone your code and data, they can 100% reproduce your results, without getting errors (or divergent results)
+### Reproducible = When you send someone your code and data, they can 100% reproduce your results without getting errors (or divergent results)
 
 ---
 
 - Make sure you are using the **most recent version of R** (sometimes packages are or aren't
 compatible with different versions of R)
 
+--
+
 - Update your packages: `update.packages()`
+
+--
 
 - Load AND install packages: 
     - `if (!require("packagename")) {install.packages("packagename"); require("packagename")}` 
-    
+  
+--
+
 - DON'T include paths when you load data. Your path won't work for other people. Specify working directories instead. 
 
+--
+
 - Save any models you've run.
+
+--
 
 - Clear your environment and try running everything again. Bonus if you run your code on a new machine.
 
