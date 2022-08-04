@@ -8,21 +8,17 @@ output:
     nature:
       highlightStyle: github
       highlightLines: true
-      countIncrementalSlides: false
       ratio: 16:9
+      beforeInit: "macros.js"
+      slideNumberFormat: "%current%/%total%"
+      countIncrementalSlides: true
 ---
 
-```{r child = "setup.Rmd"}
-```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = F, 
+                      warning = F,
+                      message = F)
 
-```{r packages, include = F, eval = T}
-library(tidyverse)
-library(skimr)
-library(janitor)
-library(DT)
-library(here)
-library(kableExtra)
-library(knitr)
 library(xaringan)
 ```
 
@@ -31,35 +27,28 @@ class: center, middle, inverse, dk-section-title
 **Slides adapted from David Keyes (@dgkeyes), inspired by Danielle Navarro (@djnavarro) and Paul Campbell (@paulcampbell91)**
 
 ---
-class: center, middle, inverse, dk-section-title
-
-# Agenda
-
-Welcome to our workshop!
-
---
-
-Intro to R & RStudio  (Yolanda)
-
--- 
-
-Getting Started on Using R/RStudio (Yolanda)
-
---
-
-
-Data Manipulation (Joscelin)
-
---
-
-Data Visualization and RMarkdown (Grace)
-
----
 
 class: center, middle, inverse, dk-section-title
 
 # Welcome to our workshop!
 
+---
+
+class: center, middle, inverse, dk-section-title
+
+# Agenda
+
+--
+
+- Intro to R & RStudio  (Yolanda)
+
+--
+
+- Data Wrangling (Joscelin)
+
+--
+
+- Data Visualization and RMarkdown (Grace)
 
 ---
 
@@ -67,14 +56,15 @@ class: center, middle, inverse, dk-section-title
 
 
 .center[
-![](images/high_five.gif)]
+![:scale 80%](images/high_five.gif)]
 
 ---
+
 ## Still stuck? Raise your hand
 
 
 .center[
-![](images/hand up.png)]
+![:scale 50%](images/hand up.png)]
 
 
 ---
@@ -83,8 +73,8 @@ class: center, middle, inverse, dk-section-title
 
 # Intro to R and Importing Datasets
 
-
 ---
+
 ### Download and Install R
 
 •	Visit: http://www.Rproject.org/, choose the CRAN that is the closest with you physically. 
@@ -112,23 +102,23 @@ class: center, middle, inverse, dk-section-title
 1) RStudio makes **script writing** easier.
 
 ![](images/RStudio_Scriptwriting.png)
+
 ---
 
 ### Why do we recommend using RStudio
-
 
 2) RStudio makes it convenient to **view your environment** and interact with stored objects.
 
 ![](images/RStudio_Environment.png)
+
 ---
 
 ### Why do we recommend using RStudio
 
-3) RStudio makes **graphics** accesible. 
+3) RStudio makes **graphics** accessible. 
 ![](images/RStudio_Graphs.png)
 
 ---
-
 
 ## Two File Types in R
 
@@ -153,10 +143,10 @@ data <- read_csv("data.csv")
 **RMarkdown files (.Rmd)**
 
 Text is assumed to be text unless you put it in a code chunk (more on this soon)]
+
 ---
 
 ## R Scripts
-
 
 Create new script file: File -> New File -> R Script
 
@@ -174,17 +164,18 @@ Create new script file: File -> New File -> R Script
 * Handling packages
 ]
 
-
 .pull-right[
 ![](images/Let_it_begin.gif)]
 
 ---
 ## Skill 1 - Case Sensitivity
 
-R is **case sensitive** so choose one of the following for all objects and **be consistent**.]
+--
+
+.pull-left[R is **case sensitive** so choose one of the following for all objects and **be consistent**.]
 
 --
-![:scale 50%](images/Why_Error.jpg)
+.pull-right[![:scale 80%](images/Why_Error.jpg)]
 
 ---
 
@@ -213,10 +204,9 @@ student.data
 
 ---
 Art by @allison_horst
-![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/coding_cases.png)
+![:scale 92%](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/other-stats-artwork/coding_cases.png)
 
 ---
-
 
 ## Skill 2 - How to Run Code
 
@@ -228,13 +218,15 @@ Run the code:
 If you have Windows: control + enter 
 
 ![](images/Windows_Keyboard.png)]
+
 --
+
 .pull-right[
 
 If you have IOS: command + enter 
 
 ![](images/Macbook_keyboard.png)]
---
+
 ---
 
 ## Skill 3 - Make Comments
@@ -242,26 +234,24 @@ If you have IOS: command + enter
 Comments help others understand your codes & help yourself keep track of your coding.
 
 ```{r eval = F}
-
-
 # Show the first 5 rows of my data
-
 head(data, n = 5)
-
 ```
-![](images/Make_Comments.png)]
+
+![:scale 40%](images/Make_Comments.png)
 
 ---
+
 ## Skill 4.1 - Install Packages
 
-To install packages, use the "install.pacakges" command. See following syntax:
+To install packages, use the "install.packages" command. See following syntax:
 
 ```{r eval=F}
 install.packages("tidyverse")
 install.packages("skimr")
 ```
 
-The package name must be in quotation marks.
+The package name must be in quotation marks when you install them.
 
 ---
 
@@ -281,10 +271,10 @@ Packages should be loaded **once per session**.
 ]
 
 --
+
 .dk-highlight-box[
 Packages should be installed **once per computer**.
 ]
-
 
 ---
 
@@ -303,6 +293,7 @@ chds6162_data <- read_csv("data/chds6162_data.csv")
 ---
 
 ### Excel
+
 ```{r eval = F}
 library(readxl)
 
@@ -313,16 +304,13 @@ chds6162_data <- read_excel("data/chds6162_data.xls")
 --
 
 ### SPSS
+
 ```{r = FALSE}
 library(haven)
 chds6162_data <- read_sav("data/chds6162_data.sav")
-
 ```
 
-
-
 ---
-
 
 ## Set Working Directories
 
@@ -356,19 +344,22 @@ Data we have imported is available in the environment/history pane.
 ![](images/rstudio-panes-highlight-environment.png)
 ]
 
-
 ---
 
 
 ### ?function
 
-Use the ? to get help about anything you're confused about
+.pull-left[Use the ? to get help about anything you're confused about
 
 ```{r}
 
 ?read_csv
 
 ```
+]
+
+.pull-right[![](images/function_info.gif)]
+
 
 
 
