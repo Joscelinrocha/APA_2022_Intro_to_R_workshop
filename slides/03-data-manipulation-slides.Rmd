@@ -1,6 +1,6 @@
 ---
 title: "Intro to Data Manipulation"
-author: "Joscelin Rocha Hidalgo <br /> (she,her,hers) <br /> @JoscelinRocha"
+author: "Joscelin Rocha-Hidalgo <br /> (she, her, hers) <br /> @JoscelinRocha"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
@@ -10,6 +10,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: 16:9
+      beforeInit: "macros.js"
 ---
 ```{r include = FALSE}
 #options(htmltools.dir.version = FALSE)
@@ -29,8 +30,8 @@ library(janitor)
 library(here)
 library(kableExtra)
 library(xaringan)
-
-
+# devtools::install_github("gadenbuie/countdown")
+library(countdown)
 
 ```
 
@@ -39,12 +40,6 @@ class: center, middle, inverse, dk-section-title
 **Slides adapted from David Keyes (@dgkeyes), inspired by Danielle Navarro (@djnavarro) and Paul Campbell (@paulcampbell91)**
 
 ---
-
-
-```{r include = F, eval = T}
-data <- read_csv(here("data/chds6162_data.csv")) %>% 
-  clean_names()
-```
 
 
 
@@ -58,10 +53,11 @@ data <- read_csv(here("data/chds6162_data.csv")) %>%
 ![](images/chds_logo.png)
 ]
 
-???
 
-Website: https://www.stat.berkeley.edu/users/statlabs/papers/sample.pdf
-R package: https://vincentarelbundock.github.io/Rdatasets/doc/mosaicData/Gestation.html
+- Website: 
+https://www.stat.berkeley.edu/users/statlabs/papers/sample.pdf
+
+- R package: https://vincentarelbundock.github.io/Rdatasets/doc/mosaicData/Gestation.html
 
 
 ---
@@ -72,98 +68,475 @@ class: inverse, center, middle, dk-section-title
 
 ---
 
-![](images/tidyverse_celestial.png)
----
-
-## Base R Syntax
-
-
---
-
-```{r}
-table(data$age,
-      data$ed)
-```
-
---
-
-- In this example, table is our function and our data frame goes in the parentheses
-
---
-
-- The dollar sign is used to specify the column or variable we want (data_frame$variable)
-
---
-
-> Con: you have to refer to the database every time (annoying)
-
---
-
-> Pro: there are thousands of add-on packages available for R at CRAN
+<div class="center">
+  ![:scale 64%](images/tidyverse_celestial.png)
+</div>
 
 ---
 
-
-## Tidyverse Syntax
-
-
-
-```{r}
-data %>% 
-  tabyl(age, ed)
-
-```
-
---
-
-- This is the same as earlier but did you notice I only referred to my dataframe once?
---
-
-- The pipes! (%>%). They chain together a series of functions
-
----
 
 class: center, middle
 
-## The Pipe
-
-.pull-left[![](https://cdn.dribbble.com/users/369427/screenshots/4124541/pipe.jpg)]
-.pull-right[![](images/conceptual-tidyverse-code.png)]
+## The Pipes: %>%
+Art by @allison_horst ![:scale 80%](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/dog_treats_pipe.jpg)
 
 ---
 
-### The Pipe
+<div class = "middle">
+.pull-left[The pipes! (%>%). They chain together a series of functions]
+.pull-right[![](images/conceptual-tidyverse-code.png)]
+</div>
 
-I would read each pipe as "then." For example:
+---
 
-```{r}
-data %>% 
-  filter(age < 25) %>% 
-  group_by(ed) %>% 
-  summarize(mean_gestation = mean(gestation, na.rm = TRUE))
+## Tidyverse Syntax
 
+Let's load our database as a dataframe called "data" and **THEN** 
+clean the df variable names:
+
+--
+
+```{r eval = F}
+data <- read_csv(here("data/chds6162_data.csv")) %>% 
+  clean_names()
 ```
 
 ---
-Art by @allison_horst
-![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/dog_treats_pipe.jpg)
----
-## Shortcuts
+
+**Goal:** Calculate the mean of gestation duration by education levels for mothers younger than 25 years
+
+--
 
 .pull-left[
-![](images/windows-logo.png)
+```{r}
+data %>% #<<
+  filter(age < 25) %>% 
+  group_by(ed) %>%  
+  summarize(mean_gestation = mean(gestation, na.rm = TRUE))
+
+```
+]
+
+.pull-right[![:scale 200%](images/example_1_data.png)]
+
+---
+
+**Goal:** Calculate the mean of gestation duration by education levels for mothers younger than 25 years
+
+--
+
+.pull-left[
+```{r}
+data %>% 
+  filter(age < 25) %>% #<<
+  group_by(ed) %>%  
+  summarize(mean_gestation = mean(gestation, na.rm = TRUE))
+
+```
+]
+
+.pull-right[![:scale 200%](images/example_1_filter.png)]
+
+---
+
+**Goal:** Calculate the mean of gestation duration by education levels for mothers younger than 25 years
+
+--
+
+.pull-left[
+```{r}
+data %>% 
+  filter(age < 25) %>% 
+  group_by(ed) %>%  #<<
+  summarize(mean_gestation = mean(gestation, na.rm = TRUE)) #<<
+
+```
+]
+
+.pull-right[![:scale 200%](images/example_1_mean.png)]
+
+---
+
+## Shortcuts
+
+.pull-left[![](images/windows-logo.png)
 
 **Windows**  
 
 *control-shift-M*]
 
 --
-.pull-right[
-![](images/apple-logo.png)
+
+.pull-right[![](images/apple-logo.png)
 
 **Mac**
 
 *command-shift-M* ]
+
+---
+
+class:inverse
+
+### Functions we will learn today
+
+.large[
+<ol start=1>
+  <li> select  
+  <li> mutate
+  <li> case_when
+  <li> filter
+  <li> summarize
+  <li> group_by
+  <li> across
+  <li> relocate
+]
+
+---
+
+class: inverse, center, middle, dk-section-title
+
+# Goal #1: 
+
+--
+
+.large[
+- Create a new variable called **`wt_k`**. This variable will give you information about mom's weight pre-pregnancy(`wt`) in kilos (1 pound = .454 kilos).]
+
+--
+
+.large[
+- Select the **`id`**, **`wt`**, and **`wt_k`** columns]
+
+---
+
+```{r}
+data %>% 
+  mutate(wt_k = wt*.454) %>% #<<
+  select(id, wt, wt_k)
+```
+
+![](images/example_2_mutate.gif)
+--
+
+
+---
+.pull-left[
+```{r}
+data %>% 
+  mutate(wt_k = wt*.454) %>%
+  select(id, wt, wt_k)  #<<
+```
+
+With the function `select` we can select variables (columns) from the larger data frame.]
+--
+
+.pull-right[![:scale 200%](images/example_2_mutate_select.png)]
+
+---
+Too many decimals? Let's fix it:
+
+--
+
+.pull-left[
+
+```{r}
+data %>% 
+  mutate(wt_k = round((wt*.454),2)) %>% #<<
+  select(id, wt, wt_k)  
+```
+]
+
+--
+
+.pull-right[![:scale 150%](images/example_2_mutate_select_round.png)]
+
+
+---
+
+class:inverse
+
+### Other ways you can use the function <span style="text-decoration:underline">**`select`**</span>
+
+--
+
+- We can select a range of columns:
+
+```{r}
+data %>%
+  select(drace:dwt)
+```
+
+--
+
+- We can select specific columns and a range:
+
+```{r}
+data %>%
+  select(id, marital:last_col())
+```
+
+- We can drop variables using the -var format. 
+
+--
+
+```{r}
+data %>% select(-(marital))  # for 1 column
+
+data %>% select(-c(drace:dwt)) # for a range of columns
+```
+
+---
+
+### Other ways you can use the function <span style="text-decoration:underline">**`mutate`**</span>
+
+.pull-left[![:scale 120%](images/dplyr_mutate.png)]
+
+.pull-right[art by @allison_horst]
+
+
+---
+
+### Other ways you can use the function <span style="text-decoration:underline">**`mutate`**</span>
+
+- Create a **new variable with a specific value**
+
+--
+
+```{r}
+data %>%
+  mutate(data_decade = "60s")
+```
+
+--
+
+- Change an **existing variable** using the help of function **`case_when`**
+--
+Let's change the `marital` variable from number to their labels
+
+--
+
+```{r}
+data %>% 
+  mutate(marital = case_when(
+    marital == 1 ~ "married",
+    marital == 2 ~ "legally separated",
+    marital == 3 ~ "divorced",
+    marital == 4 ~ "widowed",
+    marital == 5 ~ "never married"
+  ))
+```
+
+---
+
+class:inverse
+### Other ways you can use the function <span style="text-decoration:underline">**`filter`**</span>
+We can use `<`, `>`, `<=`, and `>=` for numeric data. == equal, != not equal      
+.small[art by @allison_horst]
+![:scale 80%](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/dplyr_filter.jpg)
+
+---
+
+class:inverse
+### Other ways you can use the function <span style="text-decoration:underline">**`filter`**</span>
+
+--
+
+- To keep rows that do NOT equal something  
+Example: filter only those who are **not** divorced (value `3`)
+
+--
+
+```{r}
+data %>%
+  filter(marital != 3)
+```
+
+--
+
+- To keep rows that match a list
+
+--
+
+```{r}
+data %>%
+  filter(marital %in% c(2, 4,5))
+```
+
+--
+
+- To keep rows that match multiple rules
+
+--
+
+```{r}
+data %>%
+  filter(ed == 5, age %in% 20:30)
+```
+
+---
+
+### Functions we have learned so far
+```{r include=FALSE}
+#devtools::install_github("hadley/emo")
+library(emo)
+```
+
+.large[
+<ol start=1>
+  <li> select `r emo::ji("check")`
+  <li> mutate `r emo::ji("check")`
+  <li> case_when `r emo::ji("check")`
+  <li> filter `r emo::ji("check")`
+  <li> summarize
+  <li> group_by
+  <li> across
+  <li> relocate
+]
+
+---
+
+class: inverse, center, middle, dk-section-title
+
+# Goal #2: 
+
+--
+
+.large[
+- Calculate some descriptives for the gestation variable:       
+mean, sd, min, max]
+
+--
+
+.large[
+- For teen moms by age group]
+
+---
+
+With `summarize`, as the name implies, you will get a summary of your dataset.
+
+--
+
+```{r}
+data %>%
+  filter(age < 20) %>%
+  group_by(age) %>%
+  summarize(mean_gestation_length = round(mean(gestation, na.rm = TRUE),2),
+            sd_gestation_length = round(sd(gestation, na.rm = TRUE),2),
+            min_gestation_length = min(gestation, na.rm = TRUE),
+            max_gestation_length = max(gestation, na.rm = TRUE))
+```
+
+--
+
+![](images/example_3_summarize.png)
+
+--
+
+- Any guess why is there an NA for sd?
+
+---
+
+```{r}
+data %>%
+  filter(age < 20) %>%
+  group_by(age) %>%
+  count()
+```
+
+![](images/example_3_count.png)
+
+---
+
+class:inverse
+
+### Other ways you can use the function <span style="text-decoration:underline">**`group_by`**</span>
+.small[art by @allison_horst]
+![:scale 80%](images/group_by_ungroup.png)
+
+---
+
+class:inverse
+
+- Group by multiple variables
+
+```{r}
+data %>%
+  filter(age < 20) %>%
+  group_by(age, ed) %>%
+  summarize(mean_gestation_length = round(mean(gestation, na.rm = TRUE),2),
+            sd_gestation_length = round(sd(gestation, na.rm = TRUE),2),
+            min_gestation_length = min(gestation, na.rm = TRUE),
+            max_gestation_length = max(gestation, na.rm = TRUE))
+```
+
+--
+
+![](images/example_3_group_by_multiple.png)
+
+---
+
+class: inverse, center, middle, dk-section-title
+
+# Goal #3: 
+
+--
+
+.large[
+- Calculate means for multiple variables (columns) by smoking habits]
+
+.large[
+- Create a dataframe with our customized order: (smoke,mom age, dad age, gestation)]
+
+---
+
+- Let's use the function **`across`**
+```{r}
+data %>% 
+  drop_na(smoke) %>% # didn't want the mean of those with NA in the smoke var
+  group_by(smoke) %>%
+  summarize(across(c(gestation,age,dage),mean,na.rm = TRUE))
+```
+
+--
+
+![](images/example_4_across.png)
+
+---
+
+```{r}
+data %>% 
+  drop_na(smoke) %>% # didn't want the mean of those with NA in the smoke var
+  group_by(smoke) %>%
+  summarize(across(c(gestation,age,dage),mean,na.rm = TRUE)) %>%
+    relocate (gestation, .after = last_col()) #<<
+
+```
+
+--
+
+![](images/example_4_relocate.png)
+
+---
+
+- Save dataframe as "data_to_save"
+```{r}
+data_to_save <- data %>% #<<
+  drop_na(smoke) %>% # didn't want the mean of those with NA in the smoke var
+  group_by(smoke) %>%
+  summarize(across(c(gestation,age,dage),mean,na.rm = TRUE)) %>%
+    relocate (gestation, .after = last_col())
+
+```
+
+--
+
+- Export csv
+
+```{r}
+write_csv(data_to_save, "exports/example_to_export.csv") #<<
+```
+
+
 ---
 
 class:inverse
@@ -173,37 +546,10 @@ class:inverse
 
 1. Open the 03-data-manipulation-exercises.Rmd file
 
---
-
 1. Load the `tidyverse` package
-
---
 
 1. Import the Child Health and Development Studies dataset: **`data/chds6162_data.csv`** to a data frame called **`data`**
 
---
+1. Goals:
 
-1. I will walk you through some examples and then it will be your turn
-
---
-
-1. These are the functions we will go over:
-
-  <ol start=1>
-  .pull-left[
-  <li> select  
-  <li> mutate
-  <li> case_when
-  <li> filter]
- 
-<ol start=5>
-.pull-right[
-<li> summarize
-<li> group_by
-<li> across
-<li> relocate
-]
-
-
-
-
+`r countdown::countdown(minutes = 10)`
