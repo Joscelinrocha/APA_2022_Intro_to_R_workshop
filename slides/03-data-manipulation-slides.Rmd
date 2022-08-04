@@ -542,14 +542,43 @@ write_csv(data_to_save, "exports/example_to_export.csv") #<<
 class:inverse
 
 ### Your Turn
-
-
 1. Open the 03-data-manipulation-exercises.Rmd file
 
 1. Load the `tidyverse` package
 
 1. Import the Child Health and Development Studies dataset: **`data/chds6162_data.csv`** to a data frame called **`data`**
 
-1. Goals:
+1. Wrangling time:
+    1. Use **`filter`** to only include those age younger than 40
+    2. Use **`mutate`** to transform the **`gestation`** var into weeks & to create a new column **`age_group`** with codes as "20s", "30s", & so on.
+    4. Use **`summarise`** to calculate a new var called **`mean_gestation_w`** by moms' **`age_group`** & **`ed`**
+    5. Assign it to a new data frame called **`mothers_below40`**
+    5. Export it as a csv!
+
+Bonus: Once you have that data frame just move of the columns around using **"relocate"**
 
 `r countdown::countdown(minutes = 10)`
+
+---
+
+## Solution
+
+```{r}
+range(data$age,na.rm = TRUE) 
+
+mothers_below30 <- data %>% 
+    filter(age < 40) %>% 
+    mutate(gestation_w = gestation/7,
+            age_group = case_when(
+              age %in% 10:19 ~ "10s",
+              age %in% 20:29 ~ "20s",
+              age %in% 30:39 ~ "30s"
+              )) %>%
+  group_by(age_group,ed) %>% 
+  summarize(mean_gestation_w = mean(gestation_w,na.rm = TRUE))
+
+mothers_below30
+
+write_csv(mothers_below30,"exports/moms_under30.csv")
+```
+
