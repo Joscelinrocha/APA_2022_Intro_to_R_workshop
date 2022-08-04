@@ -115,8 +115,11 @@ text-align: right;
 /* Footer */
 
 .remark-slide-number {
-  /* font-size: 80%; */
-  display: none;
+  font-size: 20pt;
+  margin-bottom: -11.6px;
+  margin-right: 10px;
+  color: #000000; /* Black */
+  opacity: 1; /* default: 0.5 */
 }
 
 div.dk-footer {
