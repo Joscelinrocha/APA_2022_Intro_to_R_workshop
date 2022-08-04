@@ -12,7 +12,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Load Packages
@@ -46,7 +46,7 @@ data <- -----------------
 5. Assign it to a new data frame called `mothers_below40`
 6. Export it as a csv!
 
-Bonus: Once you have that data frame just move of the variables to a different position using "relocate"
+Bonus: Once you have that data frame move the columns around using **"relocate"**
 
 
 ## Write Solution Here:
