@@ -216,6 +216,7 @@ data %&gt;%
 
 
 ---
+
 .pull-left[
 
 ```r
@@ -225,11 +226,13 @@ data %&gt;%
 ```
 
 With the function `select` we can select variables (columns) from the larger data frame.]
+
 --
 
-.pull-right[![:scale 200%](images/example_2_mutate_select.png)]
+.pull-right[![:scale 100%](images/example_2_mutate_select.png)]
 
 ---
+
 Too many decimals? Let's fix it:
 
 --
@@ -490,6 +493,8 @@ class: inverse, center, middle, dk-section-title
 .large[
 - Calculate means for multiple variables (columns) by smoking habits]
 
+--
+
 .large[
 - Create a dataframe with our customized order: (smoke,mom age, dad age, gestation)]
 
@@ -544,28 +549,43 @@ data %&gt;%
 *write_csv(data_to_save, "exports/example_to_export.csv")
 ```
 
+---
+
+### Functions we have learned so far
+
+
+.large[
+&lt;ol start=1&gt;
+  &lt;li&gt; select ✅
+  &lt;li&gt; mutate ✅
+  &lt;li&gt; case_when ✅
+  &lt;li&gt; filter ✅
+  &lt;li&gt; summarize ✅
+  &lt;li&gt; group_by ✅
+  &lt;li&gt; across ✅
+  &lt;li&gt; relocate ✅
+]
 
 ---
 
 class:inverse
 
 ### Your Turn
-1. Open the 03-data-manipulation-exercises.Rmd file
-
+1. Open the 03-data-wrangling-exercises.Rmd file
 1. Load the `tidyverse` package
-
 1. Import the Child Health and Development Studies dataset: **`data/chds6162_data.csv`** to a data frame called **`data`**
-
 1. Wrangling time:
-    1. Use **`filter`** to only include those age younger than 40
-    2. Use **`mutate`** to transform the **`gestation`** var into weeks &amp; to create a new column **`age_group`** with codes as "20s", "30s", &amp; so on.
-    4. Use **`summarise`** to calculate a new var called **`mean_gestation_w`** by moms' **`age_group`** &amp; **`ed`**
-    5. Assign it to a new data frame called **`mothers_below40`**
-    5. Export it as a csv!
+  1. Use **`filter`** to only include those w/ age younger than 40
+  2. Use **`mutate`** to transform the **`gestation`** var into weeks &amp; to create a new column **`age_group`** with codes as "20s", "30s", &amp; so on.
+  3. Use **`summarise`** to calculate a new var called **`mean_gestation_w`** by moms' **`age_group`** &amp; **`ed`**
+  4. Assign it to a new data frame called **`mothers_below40`**
+  5. Export it as a csv!
 
-Bonus: Once you have that data frame just move of the columns around using **"relocate"**
+**Bonus:**     
+Once you have that data frame move the columns     
+around using **"relocate"**
 
-<div class="countdown" id="timer_62eb78f0" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62eb7b70" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
