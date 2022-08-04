@@ -1,5 +1,5 @@
 ---
-title: "Intro to Data Manipulation"
+title: "Intro to Data Wrangling"
 author: "Joscelin Rocha-Hidalgo <br /> (she, her, hers) <br /> @JoscelinRocha"
 output:
   xaringan::moon_reader:
