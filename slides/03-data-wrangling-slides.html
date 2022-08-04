@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Intro to Data Manipulation</title>
+    <title>Intro to Data Wrangling</title>
     <meta charset="utf-8" />
     <meta name="author" content="Joscelin Rocha-Hidalgo   (she, her, hers)   @JoscelinRocha" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
@@ -15,7 +15,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Intro to Data Manipulation
+# Intro to Data Wrangling
 ]
 .author[
 ### Joscelin Rocha-Hidalgo <br /> (she, her, hers) <br /> <span class="citation">@JoscelinRocha</span>
@@ -550,19 +550,49 @@ data %&gt;%
 class:inverse
 
 ### Your Turn
-
-
 1. Open the 03-data-manipulation-exercises.Rmd file
 
 1. Load the `tidyverse` package
 
 1. Import the Child Health and Development Studies dataset: **`data/chds6162_data.csv`** to a data frame called **`data`**
 
-1. Goals:
+1. Wrangling time:
+    1. Use **`filter`** to only include those age younger than 40
+    2. Use **`mutate`** to transform the **`gestation`** var into weeks &amp; to create a new column **`age_group`** with codes as "20s", "30s", &amp; so on.
+    4. Use **`summarise`** to calculate a new var called **`mean_gestation_w`** by moms' **`age_group`** &amp; **`ed`**
+    5. Assign it to a new data frame called **`mothers_below40`**
+    5. Export it as a csv!
 
-<div class="countdown" id="timer_62eb60f7" style="right:0;bottom:0;" data-warnwhen="0">
+Bonus: Once you have that data frame just move of the columns around using **"relocate"**
+
+<div class="countdown" id="timer_62eb78f0" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+
+---
+
+## Solution
+
+
+```r
+range(data$age,na.rm = TRUE) 
+
+mothers_below30 &lt;- data %&gt;% 
+    filter(age &lt; 40) %&gt;% 
+    mutate(gestation_w = gestation/7,
+            age_group = case_when(
+              age %in% 10:19 ~ "10s",
+              age %in% 20:29 ~ "20s",
+              age %in% 30:39 ~ "30s"
+              )) %&gt;%
+  group_by(age_group,ed) %&gt;% 
+  summarize(mean_gestation_w = mean(gestation_w,na.rm = TRUE))
+
+mothers_below30
+
+write_csv(mothers_below30,"exports/moms_under30.csv")
+```
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
