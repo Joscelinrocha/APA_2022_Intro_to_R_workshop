@@ -10,10 +10,13 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: 16:9
+      beforeInit: "macros.js"
 ---
-```{r include = FALSE}
-#options(htmltools.dir.version = FALSE)
-#xaringan::inf_mr()
+
+```{r include=FALSE}
+library(xaringan)
+# devtools::install_github("gadenbuie/countdown")
+library(countdown)
 ```
 
 class: center, middle, inverse, dk-section-title
@@ -52,38 +55,35 @@ RMarkdown Interface
 - Make slides for presentations (like this one!)
 - Create websites or blogs
 - and more!
---
-
 
 ---
 # Why use RMarkdown?
 
 --
-RMarkdown was designed for easier **reproducibility**. 
+
+- RMarkdown was designed for easier **reproducibility**. 
 
 --
 
-Your code and narrative are in the same place, so collaborators can see what you did, why you did it, and how you obtained your results.
+- Your code and narrative are in the same place, so collaborators can see what you did, why you did it, and how you obtained your results.
 
 --
 
-RMarkdown is flexible and can support several languages (e.g., Python, C++, Java, etc. ) and several output types, which makes collaboration easy.
+- RMarkdown is flexible and can support several languages (e.g., Python, C++, Java, etc.) and several output types, which makes collaboration easy.
 
 --
 
 You can alternate between text and code within the same document
+
 ```{r}
 #you don't need to use hashmarks for text (outside of a chunk)
 ```
-
 
 ---
 ### You can also visualize what your code will look like once it's knitted!
 
 
 ![](images/viewer_markdown.png)
-
-
 
 ---
 # RMarkdown Overview
@@ -93,8 +93,6 @@ You can alternate between text and code within the same document
 Every RMarkdown document has the following:
 
 ![](images/rmarkdown-overview.png)
-
-
 
 ---
 
@@ -118,10 +116,7 @@ Specify how you want your knitted file to look (e.g., do you want a table of con
 
 ---
 
-
 # Text
-
-
 
 ![](images/text.png)
 
@@ -137,9 +132,7 @@ Specify how you want your knitted file to look (e.g., do you want a table of con
 Text with **some words in bold** 
 and *some words in italics*
 
-
 ```
-
 ]
 
 --
@@ -151,24 +144,20 @@ Text with **some words in bold** and *some words in italics*
 
 ]
 
-
 ---
 
 ## Headers
-
 
 .pull-left[
 **Markdown**
 
 ```
 
-
 # First-Level Header
 
 ## Second-Level Header
 
 ### Third-Level Subheader
-
 
 ```
 ]
@@ -186,13 +175,9 @@ Text with **some words in bold** and *some words in italics*
 
 ]
 
-
-
 ---
 
-
 ## Lists
-
 
 .pull-left[
 **Markdown**
@@ -217,13 +202,10 @@ Text with **some words in bold** and *some words in italics*
 - Bulleted list item #1
 - Bulleted list item #2
 
-
 1. Numbered list item #1
 1. Numbered list item #2
 
 ]
-
-
 
 ---
 
@@ -231,11 +213,13 @@ Text with **some words in bold** and *some words in italics*
 Surround code with back ticks and r. R replaces inline code with its results.
 
 --
+
 ```{r}
-# Two plus two equals `r 2 + 2`.
+#Two plus two equals `r 2 + 2`
 ```
 
 --
+
 *becomes*
 
 --
@@ -244,21 +228,15 @@ Two plus two equals `r 2 + 2`.
 
 --
 
-This is great for writing papers!
+- This is great for writing papers!
 
 ---
 
-
 # Code Chunk
-
 
 They start with three backticks and {r} and end with three backticks. 
 
-.pull-left[
-
-
-![](images/chunk.png)
-]
+.pull-left[![](images/chunk.png)]
 
 --
 
@@ -266,9 +244,6 @@ They start with three backticks and {r} and end with three backticks.
 
 ![](images/my-chunk-plot.png)
 ]
-
-
-
 
 ---
 
@@ -313,9 +288,7 @@ They start with three backticks and {r} and end with three backticks.
 - **`echo`** (show the R code in the knitted report)
 - and many more ...
 
-
 ---
-
 
 ## Setup Code Chunk
 
@@ -333,35 +306,45 @@ All chunk options can be set at the **global level** (in the setup code chunk) o
 
 Options at the individual chunk level **override** global chunk options.
 
-
 ---
 ## Knitting (aka Export)
-
 
 ![](images/rmarkdown_knitting.gif)
 
 Your RMarkdown won't knit if you have errors in your code. Knit early and often to identify errors!
 
 ---
-## Writing Reproducible Code 
+
+## Writing Reproducible Code
 *(adapted from Harvard WiP Crash Course in R by Kirsten Morehouse)*
+
 --
 
-### Reproducible = When you send someone your code and data, they can 100% reproduce your results, without getting errors (or divergent results)
+### Reproducible = .small[When you send someone your code and data, they can 100% reproduce your results, without getting errors (or divergent results)]
 
 ---
 
 - Make sure you are using the **most recent version of R** (sometimes packages are or aren't
 compatible with different versions of R)
 
+--
+
 - Update your packages: `update.packages()`
+
+--
 
 - Load AND install packages: 
     - `if (!require("packagename")) {install.packages("packagename"); require("packagename")}` 
     
+--
+    
 - DON'T include paths when you load data. Your path won't work for other people. Specify working directories instead. 
 
+--
+
 - Save any models you've run.
+
+--
 
 - Clear your environment and try running everything again. Bonus if you run your code on a new machine.
 
@@ -375,7 +358,6 @@ as well as the order in which the scripts shoudl be run)
 - Data + Codebook 
 - Analysis script (bonus points for data cleaning script, too!)
 - Saved models
-
 
 ---
 class: inverse
@@ -395,7 +377,10 @@ class: inverse
 
 1. Add the following first-level header: "Introduction"
 
+`r countdown::countdown(minutes = 3)`
+
 ---
+
 class: inverse
 
 ## Your Turn
@@ -406,27 +391,25 @@ class: inverse
 <li> Add the following second-level header: "Reasons Why I am the Best"
 
 <li> Add the following list of reasons:
-
     - Because I say so
     - Because it is true
     - Why would I lie?
-    
-
-
----
-class:inverse
-
-## Your Turn
-<ol start=9>
 <li> Create a chunk using a shortcut
 <li> Calculate 2 + 2 and save the result as a variable called "my_var"
 <li> Print "my_var" using print()
-<li> Knit and reopen the report.html file to make sure your changes show up.
+<li> Knit and reopen the report.html file
+
+`r countdown::countdown(minutes = 5)`
 
 ---
-More Resources
+
+### More Resources
 
 ![](images/rmarkdown_cheatsheet.png)
 ---
+
+class: center
+
 More Resources (this just in!!)
-![](images/papaja.png)
+
+![:scale 90%](images/papaja.png)
