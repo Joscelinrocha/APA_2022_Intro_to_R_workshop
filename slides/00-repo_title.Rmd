@@ -1,0 +1,49 @@
+---
+title: "Introduction to R Workshop"
+author: "Joscelin Rocha Hidalgo - she/her - @JoscelinRocha <br /> Grace Goodwin - she/her - @gracejgoodwin <br />  Yolanda Yang - she/her - @yexinyu_yang <br />"
+output:
+  xaringan::moon_reader:
+    css: ["style.css", "default"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      beforeInit: "macros.js"
+      slideNumberFormat: "%current%/%total%"
+      countIncrementalSlides: true
+      autoplay: 10000
+      loop: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = F, 
+                      warning = F,
+                      message = F)
+
+library(xaringan)
+```
+
+
+
+class: center, middle
+
+### Download Slides & Exercises from:
+
+.big[#### https://github.com/Joscelinrocha/APA_2022_Intro_to_R_workshop]
+
+---
+
+.center[![:scale 83%](images/APA_twitter_post_slide.png)]
+
+---
+
+class: center, middle
+
+### Download Slides & Exercises from:
+
+.big[#### https://github.com/Joscelinrocha/APA_2022_Intro_to_R_workshop]
+
+---
+
+.center[![:scale 83%](images/APA_twitter_post_slide.png)]
