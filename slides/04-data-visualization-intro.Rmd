@@ -54,8 +54,6 @@ Think of your ggplot like a cake with layers
 
 Each layer adds something to the graph
 
---
-
 Layers:
 
 --
@@ -241,6 +239,7 @@ aes(age,ht,color = smoke_lbl)) +
 ]
 
 ---
+
 ### Save your plots
 
 - RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
@@ -269,3 +268,9 @@ More Resources
 More Resources
 
 ![:scale 250%](images/esquisse.gif)
+
+
+```{r}
+renderthis::to_pdf("04-data-visualization-intro.Rmd", partial_slides = TRUE)
+```
+

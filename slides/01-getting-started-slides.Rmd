@@ -363,7 +363,3 @@ Data we have imported is available in the environment/history pane.
 ]
 
 .pull-right[![](images/function_info.gif)]
-
-
-
-

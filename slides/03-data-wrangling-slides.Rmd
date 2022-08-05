@@ -152,7 +152,7 @@ data %>%
 
 ---
 
-## Shortcuts
+## Shortcuts to create `pipes`
 
 .pull-left[![](images/windows-logo.png)
 
@@ -211,8 +211,6 @@ data %>%
 ```
 
 ![](images/example_2_mutate.gif)
---
-
 
 ---
 
@@ -247,7 +245,6 @@ data %>%
 --
 
 .pull-right[![:scale 150%](images/example_2_mutate_select_round.png)]
-
 
 ---
 
@@ -519,6 +516,7 @@ data %>%
 ---
 
 - Save dataframe as "data_to_save"
+
 ```{r}
 data_to_save <- data %>% #<<
   drop_na(smoke) %>% # didn't want the mean of those with NA in the smoke var
@@ -600,3 +598,6 @@ mothers_below30
 write_csv(mothers_below30,"exports/moms_under30.csv")
 ```
 
+```{r}
+renderthis::to_pdf("03-data-wrangling-slides.Rmd", partial_slides = TRUE)
+```

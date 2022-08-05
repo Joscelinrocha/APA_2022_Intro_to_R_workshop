@@ -415,3 +415,8 @@ class: center
 More Resources (this just in!!)
 
 ![:scale 90%](images/papaja.png)
+
+```{r}
+renderthis::to_pdf("02-rmarkdown-slides.Rmd")
+```
+

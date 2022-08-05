@@ -150,7 +150,7 @@ data %&gt;%
 
 ---
 
-## Shortcuts
+## Shortcuts to create `pipes`
 
 .pull-left[![](images/windows-logo.png)
 
@@ -210,8 +210,6 @@ data %&gt;%
 ```
 
 ![](images/example_2_mutate.gif)
---
-
 
 ---
 
@@ -248,7 +246,6 @@ data %&gt;%
 --
 
 .pull-right[![:scale 150%](images/example_2_mutate_select_round.png)]
-
 
 ---
 
@@ -530,6 +527,7 @@ data %&gt;%
 
 - Save dataframe as "data_to_save"
 
+
 ```r
 *data_to_save &lt;- data %&gt;%
   drop_na(smoke) %&gt;% # didn't want the mean of those with NA in the smoke var
@@ -583,7 +581,7 @@ class:inverse
 Once you have that data frame move the columns     
 around using **"relocate"**
 
-<div class="countdown" id="timer_62ec86e1" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62ed84ed" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -611,6 +609,10 @@ mothers_below30
 write_csv(mothers_below30,"exports/moms_under30.csv")
 ```
 
+
+```r
+renderthis::to_pdf("03-data-wrangling-slides.Rmd", partial_slides = TRUE)
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
