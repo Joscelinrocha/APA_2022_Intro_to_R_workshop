@@ -105,7 +105,3 @@ class: inverse, center, middle, dk-section-title
 class: inverse, center, middle, dk-section-title
 
 ![:scale 80%](images/APAGS_vote_2.jpeg)
-
-```{r}
-renderthis::to_pdf("05-end-of-workshop-slides.Rmd", partial_slides = TRUE)
-```

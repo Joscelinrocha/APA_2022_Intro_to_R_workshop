@@ -270,7 +270,3 @@ More Resources
 ![:scale 250%](images/esquisse.gif)
 
 
-```{r}
-renderthis::to_pdf("04-data-visualization-intro.Rmd", partial_slides = TRUE)
-```
-

@@ -597,7 +597,3 @@ mothers_below30
 
 write_csv(mothers_below30,"exports/moms_under30.csv")
 ```
-
-```{r}
-renderthis::to_pdf("03-data-wrangling-slides.Rmd", partial_slides = TRUE)
-```
