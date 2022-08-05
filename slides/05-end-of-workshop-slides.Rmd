@@ -1,6 +1,6 @@
 ---
 title: "Thank you!!! Now what?"
-author: "Joscelin Rocha Hidalgo <br /> (she,her,hers) <br /> @JoscelinRocha"
+author: "Joscelin Rocha-Hidalgo <br /> (she, her, hers) <br /> @JoscelinRocha"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
@@ -10,6 +10,7 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: 16:9
+      beforeInit: "macros.js"
 ---
 ```{r include = FALSE}
 #options(htmltools.dir.version = FALSE)
@@ -24,15 +25,18 @@ class: inverse, center, middle, dk-section-title
 
 .pull-left[
 Here are a couple of wonderful accounts you could follow:   
-- [@rstatstweet](https://twitter.com/rstatstweet?lang=en)
-- [@tidyversetweets](https://twitter.com/tidyversetweets)
+- [@RStatsTweet](https://twitter.com/rstatstweet?lang=en)
+- [@TidyverseTweets](https://twitter.com/tidyversetweets)
 - [@R_Forwards](https://twitter.com/R_Forwards)
-- [@djnavarro](https://twitter.com/djnavarro)
-- [@hadleywickham](https://twitter.com/hadleywickham)
-- [@allison_horst](https://twitter.com/allison_horst)
-- [@thomasp85](https://twitter.com/thomasp85)
+- [@RForTheRest](https://twitter.com/rfortherest)
+- [@DGKeyes](https://twitter.com/dgkeyes)
+- [CghLewis](https://twitter.com/Cghlewis)
+- [@CaraRThompson](https://twitter.com/cararthompson)
+- [@djNavarro](https://twitter.com/djnavarro)
+- [@HadleyWickham](https://twitter.com/hadleywickham)
+- [@Allison_Horst](https://twitter.com/allison_horst)
+- [@Thomasp85](https://twitter.com/thomasp85)
 - [@R_LGBTQ](https://twitter.com/R_LGBTQ)
-- [@RLadiesDC](https://twitter.com/RLadiesDC)
 - [@rctatman](https://twitter.com/rctatman)
 - [@RLadiesGlobal](https://twitter.com/RLadiesGlobal)
 - and many many more!
@@ -87,9 +91,16 @@ art by @allison_horst]
 Remember that there is an entire community happy to help you out whenever you encounter an obstacle in your learning path! 
           
           
-![](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/code_hero_rstats.png)
+![:scale 100%](https://raw.githubusercontent.com/allisonhorst/stats-illustrations/master/rstats-artwork/code_hero_rstats.png)
 art by @allison_horst]
 
+---
 
+class: inverse, center, middle, dk-section-title
+![:scale 80%](images/APAGS_vote_1.jpeg)
 
+---
 
+class: inverse, center, middle, dk-section-title
+
+![:scale 80%](images/APAGS_vote_2.jpeg)
