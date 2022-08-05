@@ -1,6 +1,6 @@
 ---
 title: "Data Visualization"
-author: "Grace J. Goodwin <br /> (she/her) <br /> @gracejgoodwin"
+author: "Grace J. Goodwin <br /> (she/ her/ hers) <br /> @gracejgoodwin"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
@@ -10,14 +10,17 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: 16:9
+      beforeInit: "macros.js"
 ---
-```{r include = FALSE, warning = FALSE}
-#options(htmltools.dir.version = FALSE)
-#xaringan::inf_mr()
+
+```{r include=FALSE}
+knitr::opts_chunk$set(eval = F, 
+                      warning = F,
+                      message = F)
 ```
 
-
 # ggplot
+
 ```{r, echo=FALSE, out.width="50%", fig.cap="Art by @alison_horst"}
 knitr::include_graphics("images/horst_ggplot.png")
 ```
@@ -42,7 +45,9 @@ ggplots are built from:
 + a **geom** draws the graph (e.g, scatterplot, histogram, etc.)
 
 ---
+
 # ggplot template
+
 Think of your ggplot like a cake with layers
 
 --
@@ -70,7 +75,9 @@ Layers:
 `+ facet_wrap(~var)` (split plots by specific variable)
 
 ---
+
 ## Some examples
+
 --
 
 ### Basic Scatterplot
@@ -78,13 +85,12 @@ Layers:
 .pull-left[
 **Markdown**
 
-```
+```{r eval=FALSE}
+
 ggplot(data = data,
        mapping = aes(x = age,
                      y = ht)) +
-  geom_point()
-
-
+  geom_point() #<<
 ```
 
 ]
@@ -93,8 +99,7 @@ ggplot(data = data,
 
 .pull-right[
 **Output**
-![](images/ex_scatterplot_basic.png)
-
+![:scale 170%](images/ex_scatterplot_basic.png)
 ]
 
 ---
@@ -104,20 +109,19 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+```{r eval=FALSE}
 ggplot(data = data, 
        mapping = aes(x = age)) +
-  geom_histogram()
+  geom_histogram() #<<
 
 ```
-
 ]
 
 --
 
 .pull-right[
 **Output**
-![](images/ex_bar_basic.png)
+![:scale 160%](images/ex_bar_basic.png)
 
 ]
 
@@ -128,11 +132,11 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+```{r eval=FALSE}
 ggplot(data = data,
        mapping = aes(x = age,
                      y = ht,
-                     color = smoke_lbl)) + 
+                     color = smoke_lbl)) + #<<
   geom_point()
 
 ```
@@ -154,13 +158,13 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+```{r eval=FALSE}
 ggplot(data = data,
        mapping = aes(x = age,
                      y = ht,
                      color = smoke_lbl)) + 
   geom_point() +
-  scale_color_viridis_d(option = "plasma")
+  scale_color_viridis_d(option = "plasma") #<<
 
 ```
 
@@ -179,16 +183,16 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+```{r eval=FALSE}
 ggplot(data,mapping = 
 aes(age,ht,color = smoke_lbl)) + 
   geom_point() + 
   scale_color_viridis_d(option = "plasma") + 
-  labs(title = "My Title", 
-       subtitle = "My Subtitle", 
-       x = "Age",
-       y = "Height (inches)", 
-       color = "Smoking habits") + 
+  labs(title = "My Title",  #<<
+       subtitle = "My Subtitle", #<<
+       x = "Age", #<<
+       y = "Height (inches)", #<<
+       color = "Smoking habits") + #<< 
   theme_apa() 
 
 ```
@@ -199,7 +203,7 @@ aes(age,ht,color = smoke_lbl)) +
 
 .pull-right[
 **Output**
-![](images/ex_scatter_apa.png)
+![:scale 160%](images/ex_scatter_apa.png)
 
 ]
 
@@ -211,7 +215,7 @@ aes(age,ht,color = smoke_lbl)) +
 .pull-left[
 **Markdown**
 
-```
+```{r eval=FALSE}
 ggplot(data,mapping = 
 aes(age,ht,color = smoke_lbl)) + 
   geom_point() + 
@@ -222,7 +226,7 @@ aes(age,ht,color = smoke_lbl)) +
        y = "Height (inches)", 
        color = "Smoking habits") + 
   theme_apa() + 
-  facet_wrap(~smoke_lbl) 
+  facet_wrap(~smoke_lbl) #<<
 
 ```
 
@@ -238,15 +242,16 @@ aes(age,ht,color = smoke_lbl)) +
 
 ---
 ### Save your plots
-RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
+
+- RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
 
 --
 
-Use the `ggsave` function. 
+- Use the `ggsave` function. 
 
 --
 
-By default, `ggsave` will save the last plot you made. So you can add this line of code beneath each of the graphs you want to save:
+- By default, `ggsave` will save the last plot you made. So you can add this line of code beneath each of the graphs you want to save:
 
 --
 
@@ -255,16 +260,12 @@ ggsave("filename/my_plot.png")
 ```
 
 ---
+
 More Resources
-![](images/gg_cheat.png)
+![:scale 250%](images/gg_cheat.png)
 
 ---
+
 More Resources
-```{r, echo=FALSE, out.width="70%", fig.cap="Esquisse package"}
-knitr::include_graphics("images/esquisse.gif")
-```
 
-
-
-
-
+![:scale 250%](images/esquisse.gif)

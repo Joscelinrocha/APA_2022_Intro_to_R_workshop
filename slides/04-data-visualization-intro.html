@@ -3,7 +3,7 @@
   <head>
     <title>Data Visualization</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Grace J. Goodwin   (she/her)   @gracejgoodwin" />
+    <meta name="author" content="Grace J. Goodwin   (she/ her/ hers)   @gracejgoodwin" />
     <script src="libss/header-attrs-2.14/header-attrs.js"></script>
     <link href="libss/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" type="text/css" />
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Data Visualization
 ]
 .author[
-### Grace J. Goodwin <br /> (she/her) <br /> <span class="citation">@gracejgoodwin</span>
+### Grace J. Goodwin <br /> (she/ her/ hers) <br /> <span class="citation">@gracejgoodwin</span>
 ]
 
 ---
@@ -25,10 +25,8 @@ class: center, middle, inverse, title-slide
 
 
 # ggplot
-&lt;div class="figure"&gt;
-&lt;img src="images/horst_ggplot.png" alt="Art by @alison_horst" width="50%" /&gt;
-&lt;p class="caption"&gt;Art by @alison_horst&lt;/p&gt;
-&lt;/div&gt;
+
+
 
 ---
 
@@ -50,7 +48,9 @@ ggplots are built from:
 + a **geom** draws the graph (e.g, scatterplot, histogram, etc.)
 
 ---
+
 # ggplot template
+
 Think of your ggplot like a cake with layers
 
 --
@@ -78,7 +78,9 @@ Layers:
 `+ facet_wrap(~var)` (split plots by specific variable)
 
 ---
+
 ## Some examples
+
 --
 
 ### Basic Scatterplot
@@ -86,13 +88,12 @@ Layers:
 .pull-left[
 **Markdown**
 
-```
+
+```r
 ggplot(data = data,
        mapping = aes(x = age,
                      y = ht)) +
-  geom_point()
-
-
+* geom_point()
 ```
 
 ]
@@ -101,8 +102,7 @@ ggplot(data = data,
 
 .pull-right[
 **Output**
-![](images/ex_scatterplot_basic.png)
-
+![:scale 170%](images/ex_scatterplot_basic.png)
 ]
 
 ---
@@ -112,20 +112,19 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+
+```r
 ggplot(data = data, 
        mapping = aes(x = age)) +
-  geom_histogram()
-
+* geom_histogram()
 ```
-
 ]
 
 --
 
 .pull-right[
 **Output**
-![](images/ex_bar_basic.png)
+![:scale 160%](images/ex_bar_basic.png)
 
 ]
 
@@ -136,13 +135,13 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+
+```r
 ggplot(data = data,
        mapping = aes(x = age,
                      y = ht,
-                     color = smoke_lbl)) + 
+*                    color = smoke_lbl)) +
   geom_point()
-
 ```
 
 ]
@@ -162,14 +161,14 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+
+```r
 ggplot(data = data,
        mapping = aes(x = age,
                      y = ht,
                      color = smoke_lbl)) + 
   geom_point() +
-  scale_color_viridis_d(option = "plasma")
-
+* scale_color_viridis_d(option = "plasma")
 ```
 
 ]
@@ -187,18 +186,18 @@ ggplot(data = data,
 .pull-left[
 **Markdown**
 
-```
+
+```r
 ggplot(data,mapping = 
 aes(age,ht,color = smoke_lbl)) + 
   geom_point() + 
   scale_color_viridis_d(option = "plasma") + 
-  labs(title = "My Title", 
-       subtitle = "My Subtitle", 
-       x = "Age",
-       y = "Height (inches)", 
-       color = "Smoking habits") + 
+* labs(title = "My Title",
+*      subtitle = "My Subtitle",
+*      x = "Age",
+*      y = "Height (inches)",
+*      color = "Smoking habits") +
   theme_apa() 
-
 ```
 
 ]
@@ -207,7 +206,7 @@ aes(age,ht,color = smoke_lbl)) +
 
 .pull-right[
 **Output**
-![](images/ex_scatter_apa.png)
+![:scale 160%](images/ex_scatter_apa.png)
 
 ]
 
@@ -219,7 +218,8 @@ aes(age,ht,color = smoke_lbl)) +
 .pull-left[
 **Markdown**
 
-```
+
+```r
 ggplot(data,mapping = 
 aes(age,ht,color = smoke_lbl)) + 
   geom_point() + 
@@ -230,8 +230,7 @@ aes(age,ht,color = smoke_lbl)) +
        y = "Height (inches)", 
        color = "Smoking habits") + 
   theme_apa() + 
-  facet_wrap(~smoke_lbl) 
-
+* facet_wrap(~smoke_lbl)
 ```
 
 ]
@@ -246,15 +245,16 @@ aes(age,ht,color = smoke_lbl)) +
 
 ---
 ### Save your plots
-RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
+
+- RMarkdown: just knit your file and your plots will show up as part of your HTML, Word, or PDF document.
 
 --
 
-Use the `ggsave` function. 
+- Use the `ggsave` function. 
 
 --
 
-By default, `ggsave` will save the last plot you made. So you can add this line of code beneath each of the graphs you want to save:
+- By default, `ggsave` will save the last plot you made. So you can add this line of code beneath each of the graphs you want to save:
 
 --
 
@@ -263,23 +263,19 @@ ggsave("filename/my_plot.png")
 ```
 
 ---
+
 More Resources
-![](images/gg_cheat.png)
+![:scale 250%](images/gg_cheat.png)
 
 ---
+
 More Resources
-&lt;div class="figure"&gt;
-&lt;img src="images/esquisse.gif" alt="Esquisse package" width="70%" /&gt;
-&lt;p class="caption"&gt;Esquisse package&lt;/p&gt;
-&lt;/div&gt;
 
-
-
-
-
+![:scale 250%](images/esquisse.gif)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="macros.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
