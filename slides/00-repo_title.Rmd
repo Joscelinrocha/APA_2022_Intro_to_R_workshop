@@ -25,12 +25,14 @@ library(xaringan)
 ```
 
 
-
 class: center, middle
 
 ### Download Slides & Exercises from:
 
 .big[#### https://github.com/Joscelinrocha/APA_2022_Intro_to_R_workshop]
+
+
+### APA Convention WiFi Password: 2022CONV
 
 ---
 
@@ -44,6 +46,21 @@ class: center, middle
 
 .big[#### https://github.com/Joscelinrocha/APA_2022_Intro_to_R_workshop]
 
+
+### APA Convention WiFi Password: 2022CONV
+
 ---
 
 .center[![:scale 83%](images/APA_twitter_post_slide.png)]
+
+---
+
+class: center, middle
+
+### Download Slides & Exercises from:
+
+.big[#### https://github.com/Joscelinrocha/APA_2022_Intro_to_R_workshop]
+
+
+### APA Convention WiFi Password: 2022CONV
+
