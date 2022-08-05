@@ -12,11 +12,6 @@ output:
       ratio: 16:9
       beforeInit: "macros.js"
 ---
-```{r include = FALSE}
-#options(htmltools.dir.version = FALSE)
-#xaringan::inf_mr()
-```
-
 
 
 ```{r setup, include=FALSE}

@@ -407,6 +407,7 @@ class: inverse
 ### More Resources
 
 ![](images/rmarkdown_cheatsheet.png)
+
 ---
 
 class: center
