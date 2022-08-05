@@ -1,6 +1,6 @@
 ---
 title: "Creating Reproducible Analyses: Introduction to RMarkdown"
-author: "Grace J. Goodwin <br /> (she/her) <br /> @gracejgoodwin"
+author: "Grace J. Goodwin <br /> (she/ her/ hers) <br /> @gracejgoodwin"
 output:
   xaringan::moon_reader:
     css: ["style.css", "default"]
